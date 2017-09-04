@@ -18,6 +18,7 @@ class Operation
     private function writeBilling($rowling_id, $change_amount, $operation_id, $billing_type)
     {
         $account = DB::table('rowling_account')->where('rowling_id', $rowling_id)->first();
+<<<<<<< HEAD
         $after_amount = $account->balance - $change_amount;
         $Billing = DB::table('rowling_billing')->insert([
             'rowling_id' => $rowling_id,
@@ -29,6 +30,23 @@ class Operation
         ]);
         if ($Billing) {
             return "1";
+=======
+        if ($account->balance>=$change_amount){
+            $after_amount = $account->balance - $change_amount;
+            $Billing = DB::table('rowling_billing')->insert([
+                'rowling_id' => $rowling_id,
+                'operation_id' => $operation_id,
+                'billing_type' => $billing_type,
+                'before_amount' => $account->balance,
+                'change_amount' => $change_amount,
+                'after_amount' => $after_amount,
+            ]);
+            if ($Billing) {
+                return "1";
+            }
+        }else{
+            return "2";
+>>>>>>> origin/master
         }
     }
 
@@ -36,6 +54,7 @@ class Operation
     private function operationAccount($rowling_id, $change_amount)
     {
         $account = DB::table('rowling_account')->where('rowling_id', $rowling_id)->first();
+<<<<<<< HEAD
         $balance = $account->balance - $change_amount;
         $freeze_amount = $account->freeze_amount + $change_amount;
         $updateAccount = DB::table('rowling_account')->where('rowling_id', $rowling_id)->update(
@@ -43,6 +62,19 @@ class Operation
         );
         if ($updateAccount){
             return "1";
+=======
+        if ($account->balance>=$change_amount) {
+            $balance = $account->balance - $change_amount;
+            $freeze_amount = $account->freeze_amount + $change_amount;
+            $updateAccount = DB::table('rowling_account')->where('rowling_id', $rowling_id)->update(
+                ['balance' => $balance, 'freeze_amount' => $freeze_amount]
+            );
+            if ($updateAccount) {
+                return "1";
+            }
+        }else{
+            return "2";
+>>>>>>> origin/master
         }
     }
 }

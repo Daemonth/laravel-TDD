@@ -11,7 +11,11 @@
 |
 */
 
+<<<<<<< HEAD
 $factory->define(App\User::class, function (Faker\Generator $faker) {
+=======
+$factory->define(App\Model\User::class, function (Faker\Generator $faker) {
+>>>>>>> origin/master
     return [
         'name' => $faker->name,
         'email' => $faker->email,

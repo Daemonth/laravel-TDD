@@ -2,7 +2,10 @@
 
 use Laravel\Lumen\Testing\DatabaseMigrations;
 use Laravel\Lumen\Testing\DatabaseTransactions;
+<<<<<<< HEAD
 use Test\mockObject\Request;
+=======
+>>>>>>> origin/master
 use App\Server\Operation;
 
 class ExampleTest extends TestCase
@@ -20,6 +23,7 @@ class ExampleTest extends TestCase
         );
     }
 
+<<<<<<< HEAD
     //设计一个存根的测试
     public  function  testFreezeAction(){
         $response=$this->call('POST','/freeze', ['account_id' => '2','change_amount'=>'100.00'
@@ -42,4 +46,6 @@ class ExampleTest extends TestCase
         $this->assertEquals("2",$Operation->freeze('2','100.00','1','2'));
     }
 
+=======
+>>>>>>> origin/master
 }

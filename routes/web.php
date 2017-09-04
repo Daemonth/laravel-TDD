@@ -15,6 +15,10 @@ $app->get('/', function () use ($app) {
     return $app->version();
 });
 
+<<<<<<< HEAD
 
+=======
+$app->get('/money', 'ExampleController@showMeTheMoney');
+>>>>>>> origin/master
 $app->post('/freeze','OperationController@freeze');
 $app->get('/freeze','OperationController@freeze');
